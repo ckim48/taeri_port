@@ -1,0 +1,732 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portfolio · Taeri Kim</title>
+
+  <!-- Bootstrap + AOS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <!-- Fonts: Poppins (headings) + Inter (body/UI) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --heading-font: "Poppins", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      --body-font: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+      --ink:#0b1320;
+      --sub:#667085;
+      --muted:#98a2b3;
+      --line:#e6e9ef;
+      --bg:#ffffff;
+      --surface:#ffffff;
+      --accent:#6f6df4;
+      --accent-2:#b8b6ff;
+
+      --radius-xl: 24px;
+      --radius-lg: 18px;
+
+      --bg-soft-1: linear-gradient(180deg, #ffffff 0%, #f9fbff 100%);
+      --bg-soft-2: radial-gradient(800px 420px at 90% -10%, #f6f8ff 0%, transparent 60%),
+                   radial-gradient(700px 420px at 0% 110%, #fff7fb 0%, transparent 60%);
+    }
+
+    html,body{height:100%}
+    body{
+      font-family:var(--body-font);
+      color:var(--ink);
+      background: var(--bg);
+      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+    }
+    .container-narrow{max-width:1100px}
+
+    /* HEADER */
+    header.site-header{position:sticky; top:0; z-index:50; backdrop-filter: blur(6px)}
+    .navbar{background: rgba(255,255,255,.75); border-bottom:1px solid var(--line);}
+    .brand{font-family:var(--heading-font); font-weight:800; letter-spacing:.2px}
+    .nav-link{color:var(--ink); opacity:.9}
+    .nav-link:hover{opacity:1}
+    .btn-ghost{border:1px solid var(--line); background:#fff}
+    .btn-ghost:hover{border-color:var(--accent); color:var(--accent)}
+    section{scroll-margin-top:90px}
+
+    /* HERO */
+    section.hero{
+      position:relative; overflow:hidden; min-height:92dvh;
+      display:flex; align-items:center; background: var(--bg-soft-1);
+    }
+    .hero .content{ position:relative; width:100% }
+    .hero::before{
+      content:""; position:absolute; inset:-20% -10% 0 -10%; z-index:0;
+      background:
+        radial-gradient(50% 50% at 85% 15%, rgba(185,245,233,.45) 0%, transparent 60%),
+        radial-gradient(48% 48% at 12% 88%, rgba(200,198,255,.35) 0%, transparent 60%),
+        radial-gradient(42% 42% at 20% 12%, rgba(255,199,218,.3) 0%, transparent 60%);
+      filter: blur(24px) saturate(1.05);
+    }
+
+    .eyebrow{color:var(--muted); font-weight:600; letter-spacing:.12em; text-transform:uppercase}
+    .hero h1, .about h2, .cheer h2, .awards h2, .artworks h2{
+      font-family:var(--heading-font); font-weight:800; line-height:1.06; letter-spacing:.2px;
+    }
+    .hero h1{ font-size: clamp(2.2rem, 5.6vw, 3.6rem); }
+    .lead{color:var(--sub); font-weight:500}
+    .btn-accent{
+      border:none; background:linear-gradient(90deg,var(--accent),var(--accent-2));
+      color:#fff; font-weight:600; padding:.8rem 1.1rem; border-radius:12px;
+      box-shadow:0 10px 28px rgba(111,109,244,.25);
+    }
+    .btn-accent:hover{opacity:.95}
+    .btn-outline-dark{border-radius:12px}
+
+    .frame{
+      aspect-ratio:4/5; border-radius:var(--radius-xl); overflow:hidden;
+      background:var(--surface); border:1px solid var(--line);
+      box-shadow:0 20px 60px rgba(15,23,42,.07);
+    }
+    .frame img{width:100%; height:100%; object-fit:cover; display:block}
+
+    .stat{border-left:1px solid var(--line)}
+    @media (max-width: 991.98px){
+      .stat{border-left:none}
+      section.hero{align-items:flex-start; padding-top:3rem;}
+    }
+
+    /* ABOUT */
+    section.about{
+      background: var(--bg-soft-2);
+      padding: 6rem 0 5.5rem;
+      border-top:1px solid var(--line);
+    }
+    .about .about-row{ --bs-gutter-x: clamp(2rem, 6vw, 5rem); row-gap: 2.2rem; }
+    .about h2{ font-size: clamp(1.9rem, 4.5vw, 2.6rem); margin-bottom: 1rem; }
+    .about p.lead{ color: var(--sub); max-width: 62ch; }
+    .about .photo-card{
+      border:1px solid var(--line); border-radius:var(--radius-xl); overflow:hidden;
+      background:#fff; box-shadow:0 18px 50px rgba(15,23,42,.06);
+    }
+    .about .photo-wrap{ aspect-ratio: 4/5; }
+    .about .photo-wrap img{ width:100%; height:100%; object-fit:cover; display:block; }
+    @media (max-width: 991.98px){ .about .photo-wrap{ aspect-ratio: 16/10; } }
+
+    /* CHEER */
+    section.cheer{
+      padding: 6rem 0 5.5rem;
+      border-top:1px solid var(--line);
+      background: var(--bg);
+    }
+    .cheer h2{ font-size: clamp(1.9rem, 4.5vw, 2.6rem); margin-bottom:.5rem; }
+    .cheer .sub{ color:var(--sub); max-width:64ch; }
+    .chips{ display:flex; flex-wrap:wrap; gap:.55rem .6rem; margin-top:1rem; }
+    .chip{
+      display:inline-flex; align-items:center; gap:.5rem;
+      padding:.5rem .8rem; border-radius:999px; font-weight:600; font-size:.95rem;
+      background:#fff; border:1px solid var(--line);
+    }
+    .chip .dot{
+      width:.55rem; height:.55rem; border-radius:50%;
+      background:linear-gradient(90deg,var(--accent),var(--accent-2));
+      box-shadow:0 0 0 2px rgba(111,109,244,.12);
+    }
+    .cheer .grid{
+      margin-top:2rem;
+      display:grid; gap:1.1rem;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    }
+    .cheer .tile{
+      border:1px solid var(--line); border-radius:16px; overflow:hidden;
+      background:#fff; box-shadow:0 16px 44px rgba(15,23,42,.06);
+      transition: transform .18s ease, box-shadow .18s ease;
+      cursor:zoom-in;
+      aspect-ratio: 4/3;
+    }
+    .cheer .tile:hover{ transform: translateY(-2px); box-shadow:0 22px 60px rgba(15,23,42,.08); }
+    .cheer .tile img{ width:100%; height:100%; object-fit:cover; display:block; }
+
+    /* AWARDS — modern cards */
+    section.awards{
+      padding: 6rem 0 5.5rem;
+      border-top:1px solid var(--line);
+      background: var(--bg-soft-1);
+    }
+    .awards h2{ font-size: clamp(1.9rem, 4.5vw, 2.6rem); margin-bottom:.5rem; }
+    .awards .sub{ color:var(--sub); max-width:64ch; }
+
+    .awards .grid{
+      margin-top:2rem;
+      display:grid; gap:1rem;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+    .award{
+      background:#fff; border:1px solid var(--line); border-radius:16px;
+      padding:1rem 1rem; box-shadow:0 16px 44px rgba(15,23,42,.06);
+      display:flex; flex-direction:column; gap:.6rem;
+      transition:transform .18s ease, box-shadow .18s ease;
+    }
+    .award:hover{ transform: translateY(-2px); box-shadow:0 22px 60px rgba(15,23,42,.08); }
+    .award .title{
+      font-family:var(--heading-font); font-weight:700; line-height:1.2;
+      font-size:1.05rem;
+    }
+    .award .meta{
+      display:flex; flex-wrap:wrap; gap:.4rem .5rem;
+      font-size:.85rem; color:var(--muted);
+    }
+    .award .meta .pill{
+      border:1px solid var(--line); border-radius:999px; padding:.2rem .55rem; background:#fff;
+      font-weight:600; color:#475467;
+    }
+    .award .desc{ color:var(--sub); font-size:.95rem; }
+
+    .links{ display:flex; flex-wrap:wrap; gap:.5rem; margin-top:.2rem; }
+    .link-pill{
+      display:inline-flex; align-items:center; gap:.45rem;
+      padding:.4rem .6rem; border-radius:999px; font-weight:600; font-size:.9rem;
+      background:#fff; border:1px solid var(--line); color:#344054; text-decoration:none;
+    }
+    .link-pill:hover{ border-color:var(--accent); color:var(--accent); }
+    .link-pill .icon{
+      width:.6rem; height:.6rem; border:2px solid currentColor; border-left:none; border-bottom:none;
+      transform: rotate(45deg); /* tiny external arrow */
+      margin-left:.1rem;
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      *{animation:none!important; transition:none!important}
+    }
+
+    /* AWARDS — minimalist modern cards */
+    section.awards {
+      padding:6rem 0 5.5rem;
+      border-top:1px solid var(--line);
+      background:var(--bg-soft);
+    }
+    .awards h2{
+      font-family:var(--heading-font);font-weight:800;
+      font-size:clamp(1.9rem,4.5vw,2.6rem);
+      margin-bottom:.5rem;
+    }
+    .awards .sub{color:var(--sub);max-width:64ch;}
+
+    .awards .grid {
+      margin-top:2.2rem;
+      display:grid; gap:1.2rem;
+      grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+    }
+    .award {
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:var(--radius-lg);
+      padding:1.3rem 1.4rem;
+      box-shadow:0 10px 28px rgba(15,23,42,.05);
+      transition:transform .2s ease,box-shadow .2s ease;
+    }
+    .award:hover {
+      transform:translateY(-2px);
+      box-shadow:0 18px 50px rgba(15,23,42,.08);
+    }
+    .award .title {
+      font-family:var(--heading-font);
+      font-weight:700;
+      font-size:1.1rem;
+      margin-bottom:.3rem;
+/*      border-left:3px solid var(--accent);*/
+/*      padding-left:.6rem;*/
+    }
+    .award .desc {
+      color:var(--sub);
+      font-size:.97rem;
+      margin-bottom:.5rem;
+    }
+
+    .links{margin-top:.5rem;}
+    .link-btn {
+      display:inline-flex;align-items:center;gap:.4rem;
+      font-weight:600;font-size:.9rem;
+      color:var(--ink);text-decoration:none;
+      border-bottom:2px solid var(--accent);
+      padding-bottom:1px;
+    }
+    .link-btn:hover{color:var(--accent);}
+    .dot {
+      display:inline-block;width:.55rem;height:.55rem;
+      background:var(--accent);border-radius:50%;
+    }
+          /* ARTWORKS — clean, no cropping (object-fit: contain) */
+   /* ARTWORKS — bigger tiles, natural ratios (no cropping) */
+section.artworks{
+  padding: 6rem 0 5.5rem;
+  border-top:1px solid var(--line);
+  background: var(--bg);
+}
+.artworks h2{ font-size: clamp(1.9rem, 4.5vw, 2.6rem); margin-bottom:.5rem; }
+.artworks .sub{ color:var(--sub); max-width:64ch; }
+
+/* Larger min width so each tile is bigger */
+.art-grid{
+  margin-top:2rem;
+  display:grid; gap:1.2rem;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+}
+
+/* Let images define height (natural ratio). No fixed aspect-ratio, no padding. */
+.art-tile{
+  background:#fff; border:1px solid var(--line);
+  border-radius:16px; box-shadow:0 16px 44px rgba(15,23,42,.05);
+  overflow:hidden; transition:transform .18s ease, box-shadow .18s ease;
+  cursor: zoom-in;
+}
+.art-tile:hover{ transform: translateY(-2px); box-shadow:0 22px 60px rgba(15,23,42,.08); }
+
+/* Natural ratio, no cropping */
+.art-tile img{
+  width:100%; height:auto; display:block;
+}
+
+/* Uniform grid (cropped) — swap into .art-tile img */
+.art-tile { aspect-ratio: 4 / 3; display:block; }
+.art-tile img{ width:100%; height:100%; object-fit:cover; }
+
+
+/* Modal */
+.gallery-modal .modal-dialog{ max-width: min(1100px, 92vw); }
+.gallery-modal .modal-body{ padding:0; background:#000; }
+.gallery-modal .modal-body img{ width:100%; height:auto; display:block; }
+.gallery-modal .modal-footer{
+  display:flex; justify-content:space-between; align-items:center;
+  gap:1rem; border-top:1px solid var(--line);
+}
+/* CONTACT — short, clean, email-only */
+section.contact{
+  padding: 5rem 0 4.5rem;
+  border-top:1px solid var(--line);
+  background: var(--bg);
+}
+.contact h2{
+  font-family:var(--heading-font);
+  font-weight:800;
+  font-size:clamp(1.9rem,4.5vw,2.4rem);
+  margin-bottom:.5rem;
+}
+.contact .sub{ color:var(--sub); max-width:64ch; }
+
+/* subtle email call-to-action */
+.email-cta{
+  display:inline-flex; align-items:center; gap:.5rem;
+  font-weight:700; font-size:1.05rem;
+  color:var(--ink); text-decoration:none;
+  border-bottom:2px solid var(--accent);
+  padding-bottom:2px;
+}
+.email-cta:hover{ color:var(--accent); }
+.email-cta .dot{
+  width:.55rem; height:.55rem; border-radius:50%;
+  background:var(--accent);
+}
+
+/* FOOTER */
+footer.site-footer{
+  border-top:1px solid var(--line);
+  background:#fff;
+  padding: 1.4rem 0;
+  color:#475467;
+  font-size:.95rem;
+}
+
+/* RESEARCH — single-row layout */
+section.research{
+  padding:6rem 0 5.5rem;
+  border-top:1px solid var(--line);
+  background:var(--bg-soft-1);
+}
+.research h2{
+  font-family:var(--heading-font);
+  font-weight:800;
+  font-size:clamp(1.9rem,4.5vw,2.6rem);
+  margin-bottom:.5rem;
+}
+.research .sub{
+  color:var(--sub);
+  max-width:64ch;
+}
+
+.pub-row{
+  margin-top:2rem;
+}
+.pub{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:var(--radius-lg);
+  padding:1.6rem 2rem;
+  box-shadow:0 10px 28px rgba(15,23,42,.05);
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+.pub:hover{
+  transform:translateY(-2px);
+  box-shadow:0 18px 50px rgba(15,23,42,.08);
+}
+.pub .title{
+  font-family:var(--heading-font);
+  font-weight:700;
+  font-size:1.25rem;
+  margin-bottom:.5rem;
+}
+.pub .desc{
+  color:var(--sub);
+  font-size:1rem;
+  margin-bottom:.7rem;
+}
+.link-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:.4rem;
+  font-weight:600;
+  font-size:.9rem;
+  color:var(--ink);
+  text-decoration:none;
+  border-bottom:2px solid var(--accent);
+  padding-bottom:1px;
+}
+.link-btn:hover{color:var(--accent);}
+.dot{
+  display:inline-block;
+  width:.55rem;
+  height:.55rem;
+  background:var(--accent);
+  border-radius:50%;
+}
+
+
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="site-header" role="banner">
+    <nav class="navbar navbar-expand-lg py-3" role="navigation" aria-label="Main">
+      <div class="container container-narrow">
+        <a class="navbar-brand brand fs-4" href="#">Taeri Kim</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="nav">
+          <ul class="navbar-nav ms-auto align-items-lg-center">
+            <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="#cheer">Activities</a></li>
+            <li class="nav-item"><a class="nav-link" href="#awards">Awards</a></li>
+            <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+            <li class="nav-item ms-lg-3 mt-2 mt-lg-0"><a class="btn btn-ghost px-3" href="#resume">Resume</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="hero" aria-label="Intro">
+    <div class="content">
+      <div class="container container-narrow">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-7" data-aos="fade-up" data-aos-delay="40">
+            <div class="eyebrow mb-3">Taeri's Portfolio</div>
+            <h1 class="display-4 mb-3">Taeri Kim</h1>
+            <p class="lead mb-4">Some Quote</p>
+            <div class="d-flex gap-2 flex-wrap">
+              <a class="btn btn-accent px-4 py-2" href="#projects">View Projects</a>
+              <a class="btn btn-outline-dark px-4 py-2" href="#contact">Contact</a>
+            </div>
+            <div class="d-flex gap-4 mt-4 pt-2 small text-muted">
+              <div>
+                <div class="fw-semibold">2026 Graduate</div>
+                <div>STEM & Design</div>
+              </div>
+              <div class="stat ps-4">
+                <div class="fw-semibold">Hackathons</div>
+                <div>4+ attended</div>
+              </div>
+              <div class="stat ps-4">
+                <div class="fw-semibold">Selected Works</div>
+                <div>12 projects</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-5" data-aos="fade-up" data-aos-delay="140">
+            <div class="frame">
+              <img src="assets/hero/hero.jpg" alt="Portrait" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about" data-aos="fade-up" aria-label="About me">
+    <div class="container container-narrow">
+      <div class="row about-row align-items-center">
+        <div class="col-lg-5" data-aos="fade-up" data-aos-delay="40">
+          <div class="photo-card">
+            <div class="photo-wrap">
+              <img src="assets/hero/hero.jpg" alt="Your portrait">
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-7" data-aos="fade-up" data-aos-delay="120">
+          <h2>About Me</h2>
+          <p class="lead">
+            I’m a design-minded student who loves building friendly, useful products. I care about clean code,
+            clear UX, and shipping work that feels delightful and reliable. Outside of class, I explore new tools,
+            sketch interface ideas, and keep refining how people interact with technology.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHEERLEADING -->
+  <section class="cheer" id="cheer" data-aos="fade-up" aria-label="Cheerleading">
+    <div class="container container-narrow">
+      <div class="row g-4 align-items-end">
+        <div class="col-lg-9" data-aos="fade-up" data-aos-delay="40">
+          <h2>Cheerleading</h2>
+          <p class="sub">
+            Varsity cheerleader with multiple global competition awards.
+            Here are a few favorite moments — from stunts to team victories.
+          </p>
+          <div class="chips">
+            <span class="chip"><span class="dot"></span> Global Champion</span>
+            <span class="chip"><span class="dot"></span> Best Stunts</span>
+            <span class="chip"><span class="dot"></span> Team Spirit Award</span>
+            <span class="chip"><span class="dot"></span> National 1st Place</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid" style="--cols:3">
+        <div class="tile" data-bs-toggle="modal" data-bs-target="#cheerModal" data-img="assets/cheer/1.jpg" data-caption="Team pyramid at the global finals.">
+          <img src="assets/cheer/1.jpeg" alt="Team pyramid at the global finals">
+        </div>
+        <div class="tile" data-bs-toggle="modal" data-bs-target="#cheerModal" data-img="assets/cheer/2.jpg" data-caption="Liberty stunt — game day halftime.">
+          <img src="assets/cheer/2.jpeg" alt="Liberty stunt — game day halftime">
+        </div>
+        <div class="tile" data-bs-toggle="modal" data-bs-target="#cheerModal" data-img="assets/cheer/3.jpg" data-caption="Trophy moment — international meet.">
+          <img src="assets/cheer/3.jpeg" alt="Trophy moment — international meet">
+        </div>
+        <div class="tile" data-bs-toggle="modal" data-bs-target="#cheerModal" data-img="assets/cheer/4.jpg" data-caption="Basket toss captured mid-air.">
+          <img src="assets/cheer/7.jpg" alt="Basket toss captured mid-air">
+        </div>
+        <div class="tile" data-bs-toggle="modal" data-bs-target="#cheerModal" data-img="assets/cheer/5.jpg" data-caption="Sideline cheer — rivalry game.">
+          <img src="assets/cheer/8.jpg" alt="Sideline cheer — rivalry game">
+        </div>
+        <div class="tile" data-bs-toggle="modal" data-bs-target="#cheerModal" data-img="assets/cheer/6.jpg" data-caption="Team jump line — perfect sync.">
+          <img src="assets/cheer/9.jpg" alt="Team jump line — perfect sync">
+        </div>
+      </div>
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div class="modal fade cheer-modal" id="cheerModal" tabindex="-1" aria-labelledby="cheerModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+          <div class="modal-body p-0">
+            <img id="cheerModalImg" src="" alt="">
+          </div>
+          <div class="modal-footer">
+            <div class="text-muted small" id="cheerModalCaption">Cheer photo</div>
+            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="awards" data-aos="fade-up" id="awards">
+    <div class="container container-narrow">
+      <div class="row g-3 align-items-end">
+        <div class="col-lg-9" data-aos="fade-up">
+          <h2>Awards</h2>
+          <p class="sub">Selected academic and creative recognitions, with highlights of excellence.</p>
+        </div>
+      </div>
+
+      <div class="grid">
+        <article class="award" data-aos="fade-up">
+          <div class="title">Scholastic Art &amp; Writing Awards (2024)</div>
+          <p class="desc">Recognized for exceptional creative writing that demonstrated originality and clarity.</p>
+          <div class="links">
+            <a class="link-btn" href="assets/awards/2024%20Scholastic%20Art%20%26%20Writing%20Awards.pdf" target="_blank"><span class="dot"></span> View Certificate</a>
+          </div>
+        </article>
+
+        <article class="award" data-aos="fade-up" data-aos-delay="80">
+          <div class="title">Scholastic Art &amp; Writing Awards (2023)</div>
+          <p class="desc">Awarded for outstanding artistic storytelling with strong technique and creativity.</p>
+          <div class="links">
+            <a class="link-btn" href="assets/awards/2023%20Scholastic%20Art%20%26%20Writing%20Awards.pdf" target="_blank"><span class="dot"></span> View Certificate</a>
+          </div>
+        </article>
+
+        <article class="award" data-aos="fade-up" data-aos-delay="100">
+          <div class="title">Conrad Challenge — Innovation Stage Award (2024)</div>
+          <p class="desc">Selected for innovative solutions demonstrating strong impact and real-world application.</p>
+          <div class="links">
+            <a class="link-btn" href="assets/awards/Conrad%202024%20Innovation%20Stage%20Award.jpg" target="_blank"><span class="dot"></span> View Photo</a>
+          </div>
+        </article>
+
+        <article class="award" data-aos="fade-up" data-aos-delay="120">
+          <div class="title">John Locke Institute — Global Essay Competition (2022)</div>
+          <p class="desc">Commended in the Law category for a persuasive and well-reasoned essay.</p>
+          <div class="links">
+            <a class="link-btn" href="assets/awards/John%20Locke%20Institute%202022%20Global%20Essay%20Competition%20%28Law%20Category%20Commendation%29_.pdf" target="_blank"><span class="dot"></span> View Certificate</a>
+          </div>
+        </article>
+
+        <article class="award" data-aos="fade-up" data-aos-delay="140">
+          <div class="title">HOSA — 2nd Place, Human Growth &amp; Development</div>
+          <p class="desc">Achieved second place for excellence in Health Science knowledge and application.</p>
+          <div class="links">
+            <a class="link-btn" href="assets/awards/Taeri%20Kim%20HOSA%202nd%20Human%20Growth.pdf" target="_blank"><span class="dot"></span> View Result</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESEARCH / PUBLICATIONS -->
+<!-- RESEARCH / PUBLICATIONS -->
+<section class="research" id="research" data-aos="fade-up" aria-label="Research & Publications">
+  <div class="container container-narrow">
+    <div class="row g-3 align-items-end">
+      <div class="col-lg-9" data-aos="fade-up">
+        <h2>Research & Publications</h2>
+        <p class="sub">
+          Selected research papers exploring design, technology, and social impact through data-driven and creative approaches.
+        </p>
+      </div>
+    </div>
+
+    <!-- Research 1 -->
+    <div class="pub-row" data-aos="fade-up">
+      <div class="pub">
+        <div class="title">Colorofour: Final Proposal</div>
+        <p class="desc">
+          A research proposal investigating the intersection of color psychology and emotion-driven AI systems. 
+          The project explores how personalized color palettes can enhance mental well-being through human–computer interaction.
+        </p>
+        <a class="link-btn" href="assets/research/Colorofour_Final_Proposal.pdf" target="_blank">
+          <span class="dot"></span> View Paper
+        </a>
+      </div>
+    </div>
+
+    <!-- Research 2 -->
+    <div class="pub-row" data-aos="fade-up" data-aos-delay="80">
+      <div class="pub">
+        <div class="title">UPenn Research Paper</div>
+        <p class="desc">
+          Collaborative research conducted under the University of Pennsylvania program, focusing on 
+          ethical implications of AI systems and responsible innovation frameworks for emerging technologies.
+        </p>
+        <a class="link-btn" href="assets/research/UPenn_Research_Paper.pdf" target="_blank">
+          <span class="dot"></span> View Paper
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ARTWORKS (8-piece gallery, matched design) -->
+<section class="artworks" id="artworks" data-aos="fade-up" aria-label="Artworks">
+  <div class="container container-narrow">
+    <div class="row g-3 align-items-end">
+      <div class="col-lg-9" data-aos="fade-up">
+        <h2>Artworks</h2>
+        <p class="sub">
+          A curated selection of my recent visual pieces — blending creativity, precision, and personal storytelling. 
+          Each artwork explores form, light, and emotion through a modern aesthetic.
+        </p>
+      </div>
+    </div>
+
+    <div class="art-grid">
+      <div class="art-tile" data-bs-toggle="modal" data-bs-target="#artModal" data-img="assets/art/1.jpg"><img src="assets/art/1.jpg" alt="Artwork 1"></div>
+      <div class="art-tile" data-bs-toggle="modal" data-bs-target="#artModal" data-img="assets/art/2.jpg"><img src="assets/art/2.jpg" alt="Artwork 2"></div>
+      <div class="art-tile" data-bs-toggle="modal" data-bs-target="#artModal" data-img="assets/art/3.png"><img src="assets/art/3.png" alt="Artwork 3"></div>
+      <div class="art-tile" data-bs-toggle="modal" data-bs-target="#artModal" data-img="assets/art/4.png"><img src="assets/art/4.png" alt="Artwork 4"></div>
+      <div class="art-tile" data-bs-toggle="modal" data-bs-target="#artModal" data-img="assets/art/5.png"><img src="assets/art/5.png" alt="Artwork 5"></div>
+      <div class="art-tile" data-bs-toggle="modal" data-bs-target="#artModal" data-img="assets/art/6.png"><img src="assets/art/6.png" alt="Artwork 6"></div>
+      <div class="art-tile" data-bs-toggle="modal" data-bs-target="#artModal" data-img="assets/art/7.png"><img src="assets/art/7.png" alt="Artwork 7"></div>
+    </div>
+  </div>
+
+  <!-- Art Lightbox Modal -->
+  <div class="modal fade gallery-modal" id="artModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-body p-0">
+          <img id="artModalImg" src="" alt="">
+        </div>
+        <div class="modal-footer">
+          <div class="text-muted small" id="artModalCaption">Artwork</div>
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- CONTACT -->
+<section class="contact" id="contact" data-aos="fade-up" aria-label="Contact">
+  <div class="container container-narrow">
+    <div class="row g-3">
+      <div class="col-lg-9" data-aos="fade-up">
+        <h2>Contact</h2>
+        <p class="sub">
+          Questions, collaborations, or opportunities? I’d love to hear from you.
+        </p>
+        <div class="mt-3">
+          <a class="email-cta" href="mailto:youremail@example.com">
+            <span class="dot"></span> youremail@example.com
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer" role="contentinfo">
+  <div class="container container-narrow d-flex justify-content-between align-items-center flex-wrap gap-2">
+    <div>© <span id="year"></span> Your Name. All rights reserved.</div>
+  </div>
+</footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.min.js"></script>
+  <script>
+    AOS.init({ duration: 800, easing: 'ease-out-cubic', once: true });
+
+    // Lightbox wiring (Cheer)
+    const cheerModal = document.getElementById('cheerModal');
+    if (cheerModal){
+      cheerModal.addEventListener('show.bs.modal', (event) => {
+        const tile = event.relatedTarget;
+        const imgSrc = tile.getAttribute('data-img');
+        const caption = tile.getAttribute('data-caption') || 'Cheer photo';
+        document.getElementById('cheerModalImg').src = imgSrc;
+        document.getElementById('cheerModalImg').alt = caption;
+        document.getElementById('cheerModalCaption').textContent = caption;
+      });
+      cheerModal.addEventListener('hidden.bs.modal', () => {
+        document.getElementById('cheerModalImg').src = '';
+      });
+    }
+  </script>
+</body>
+</html>
