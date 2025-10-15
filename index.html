@@ -8,7 +8,8 @@
   <!-- Bootstrap + AOS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
-
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
   <!-- Fonts: Poppins (headings) + Inter (body/UI) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -74,7 +75,7 @@
     .hero h1, .about h2, .cheer h2, .awards h2, .artworks h2{
       font-family:var(--heading-font); font-weight:800; line-height:1.06; letter-spacing:.2px;
     }
-    .hero h1{ font-size: clamp(2.2rem, 5.6vw, 3.6rem); }
+    .hero h1{ font-size: 3rem; }
     .lead{color:var(--sub); font-weight:500}
     .btn-accent{
       border:none; background:linear-gradient(90deg,var(--accent),var(--accent-2));
@@ -400,6 +401,60 @@ section.research{
   background:var(--accent);
   border-radius:50%;
 }
+/* PROJECTS — two-column alternating */
+/* PROJECTS — two-column alternating */
+section.projects{
+  padding:6rem 0 5.5rem;
+  border-top:1px solid var(--line);
+  background:var(--bg);
+}
+.projects h2{
+  font-family:var(--heading-font);font-weight:800;
+  font-size:clamp(1.9rem,4.5vw,2.6rem);
+  margin-bottom:.5rem;
+}
+.projects .sub{ color:var(--sub); max-width:64ch; }
+
+.project{
+  margin-top:2.2rem;
+  align-items:center;
+}
+.project + .project{ margin-top:3.2rem; }
+
+.project .img-wrap{
+  border:1px solid var(--line);
+  border-radius:var(--radius-xl);
+  background:#fff;
+  box-shadow:0 18px 50px rgba(15,23,42,.06);
+  overflow:hidden;
+}
+.project .img-wrap img{
+  width:100%; height:100%; object-fit:contain; display:block;
+  aspect-ratio: 16/10;
+}
+
+.project .eyebrow{
+  color:var(--muted); font-weight:700; letter-spacing:.12em; text-transform:uppercase;
+}
+.project .title{
+  font-family:var(--heading-font); font-weight:800; font-size:1.6rem; line-height:1.15;
+  margin:.25rem 0 .6rem 0;
+}
+.project .desc{ color:var(--sub); font-size:1.02rem; }
+.project .tags{ display:flex; flex-wrap:wrap; gap:.5rem; margin:1rem 0 1.1rem; }
+.project .tag{
+  border:1px solid var(--line); border-radius:999px; background:#fff;
+  font-weight:600; font-size:.9rem; padding:.35rem .7rem; color:#475467;
+}
+.project .actions{ display:flex; flex-wrap:wrap; gap:.6rem; }
+.project .btn-accent{ border-radius:12px; }
+.project .btn-ghost{ border-radius:12px; }
+
+/* good stacking on mobile */
+@media (max-width: 991.98px){
+  .project .img-wrap img{ aspect-ratio:auto; }
+}
+
 
 
   </style>
@@ -425,44 +480,46 @@ section.research{
       </div>
     </nav>
   </header>
-
-  <!-- HERO -->
-  <section class="hero" id="hero" aria-label="Intro">
-    <div class="content">
-      <div class="container container-narrow">
-        <div class="row align-items-center g-5">
-          <div class="col-lg-7" data-aos="fade-up" data-aos-delay="40">
-            <div class="eyebrow mb-3">Taeri's Portfolio</div>
-            <h1 class="display-4 mb-3">Taeri Kim</h1>
-            <p class="lead mb-4">Some Quote</p>
-            <div class="d-flex gap-2 flex-wrap">
-              <a class="btn btn-accent px-4 py-2" href="#projects">View Projects</a>
-              <a class="btn btn-outline-dark px-4 py-2" href="#contact">Contact</a>
+<section class="hero" id="hero" aria-label="Intro">
+  <div class="content">
+    <div class="container container-narrow">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-7" data-aos="fade-up" data-aos-delay="40">
+          <div class="eyebrow mb-3">Taeri's Portfolio</div>
+          <h1 class="display-5 mb-3">Healing through care, color, and connection</h1>
+          <p class="lead mb-4">
+            Bridging science and creativity, aspiring nurse, artist, and cheerleader dedicated to inspiring care and connection across cultures.
+          </p>
+          <div class="d-flex gap-2 flex-wrap">
+            <a class="btn btn-accent px-4 py-2" href="#projects">View Projects</a>
+            <a class="btn btn-outline-dark px-4 py-2" href="#contact">Contact</a>
+          </div>
+          <div class="d-flex gap-4 mt-4 pt-2 small text-muted">
+            <div>
+              <div class="fw-semibold">2026 Graduate</div>
+              <div>Health Science & Art</div>
             </div>
-            <div class="d-flex gap-4 mt-4 pt-2 small text-muted">
-              <div>
-                <div class="fw-semibold">2026 Graduate</div>
-                <div>STEM & Design</div>
-              </div>
-              <div class="stat ps-4">
-                <div class="fw-semibold">Hackathons</div>
-                <div>4+ attended</div>
-              </div>
-              <div class="stat ps-4">
-                <div class="fw-semibold">Selected Works</div>
-                <div>12 projects</div>
-              </div>
+            <div class="stat ps-4">
+              <div class="fw-semibold">Community</div>
+              <div>10+ events</div>
+            </div>
+            <div class="stat ps-4">
+              <div class="fw-semibold">Creative Works</div>
+              <div>20+ pieces</div>
             </div>
           </div>
-          <div class="col-lg-5" data-aos="fade-up" data-aos-delay="140">
-            <div class="frame">
-              <img src="assets/hero/hero.jpg" alt="Portrait" />
-            </div>
+        </div>
+        <div class="col-lg-5" data-aos="fade-up" data-aos-delay="140">
+          <div class="frame mx-auto" style="width: 92%;">
+            <img src="assets/myself.jpeg" alt="Portrait of Taeri Kim" />
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
+
 
   <!-- ABOUT -->
   <section class="about" id="about" data-aos="fade-up" aria-label="About me">
@@ -477,15 +534,83 @@ section.research{
         </div>
         <div class="col-lg-7" data-aos="fade-up" data-aos-delay="120">
           <h2>About Me</h2>
-          <p class="lead">
-            I’m a design-minded student who loves building friendly, useful products. I care about clean code,
-            clear UX, and shipping work that feels delightful and reliable. Outside of class, I explore new tools,
-            sketch interface ideas, and keep refining how people interact with technology.
+          <p class="lead" style="font-size:1.1rem;text-align: justify;">
+In all my 17 years of life, growing up immersed in both Korean and American cultures has given me a unique perspective on the cultural relativity in healthcare systems and their impact on people’s lives. These experiences have inspired me to pursue nursing, not just to follow procedures but build a bridge between worlds of caregiving. Outside of this goal, I’m an artist and a cheerleader, and I love finding creative ways to express myself and connect with others. Whether it’s through painting, where I can bring my ideas to life with color, or through cheerleading, where I can inspire and lift the spirits of others, I aim to make a positive impact. Ultimately, I believe that both in healthcare and in life, the small moments of care and connection are what truly make a difference. As I continue my journey, I’m committed to blending my passion for science with my creativity, working towards a future where I can advocate for those in need while inspiring others to smile along the way.
           </p>
         </div>
       </div>
     </div>
   </section>
+
+ <!-- PROJECTS -->
+<section class="projects" id="projects" data-aos="fade-up" aria-label="Projects">
+  <div class="container container-narrow">
+    <div class="row g-3 align-items-end">
+      <div class="col-lg-9" data-aos="fade-up">
+        <h2>Projects</h2>
+        <p class="sub">Selected works combining creativity, empathy, and innovation in technology and social impact.</p>
+      </div>
+    </div>
+
+    <!-- Project 1: Color of Ours -->
+    <div class="row project g-4" data-aos="fade-up" data-aos-delay="60">
+      <div class="col-lg-6">
+        <div class="eyebrow">Technology for Good</div>
+        <h3 class="title">Color of Ours</h3>
+        <p class="desc" style="text-align: justify;">
+          <strong>Color of Ours</strong> is a web-based project that raises awareness of color blindness through interactive learning and creative giving. 
+          Using <strong>Python</strong> and <strong>OpenCV</strong>, I developed image-processing algorithms that simulate how color-blind individuals perceive images 
+          across three major types—<em>Protanopia</em>, <em>Deuteranopia</em>, and <em>Tritanopia</em>. The website allows users to explore these differences visually 
+          and purchase original artwork, with all proceeds directed toward funding special-lens glasses for those affected by color blindness.
+        </p>
+        <div class="tags">
+          <span class="tag">Python</span>
+          <span class="tag">OpenCV</span>
+          <span class="tag">HTML/CSS/JavaScript</span>
+          <span class="tag">GitHub</span>
+        </div>
+        <div class="actions">
+          <a class="btn btn-accent px-3" href="https://colorofour.pythonanywhere.com" target="_blank" rel="noopener">Live Website</a>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="img-wrap mx-auto" style="width: 90%;">
+          <img src="assets/project1.png" alt="Screenshot of the Color of Ours website showing color-blind simulation and artwork shop">
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 2: Conrad Challenge -->
+    <div class="row project g-4" data-aos="fade-up" data-aos-delay="100">
+      <div class="col-lg-6 order-lg-1">
+        <div class="img-wrap" style="width: 90%;">
+          <img src="assets/conrad.png" alt="Presentation visuals for Conrad Challenge Innovation Stage Award">
+        </div>
+      </div>
+      <div class="col-lg-6 order-lg-2">
+        <div class="eyebrow">Innovation and Entrepreneurship</div>
+        <h3 class="title">Conrad Challenge</h3>
+        <p class="desc" style="text-align: justify;">
+          As part of the <strong>Conrad Challenge 2024</strong>, our team developed an innovative solution addressing a real-world issue in sustainability and 
+          health technology. Through extensive research, design thinking, and pitching, we created a feasible product concept emphasizing social impact 
+          and ethical responsibility. The project was recognized with the <strong>Innovation Stage Award</strong>, celebrating creativity and meaningful innovation.
+        </p>
+        <div class="tags">
+          <span class="tag">Innovation</span>
+          <span class="tag">STEM</span>
+          <span class="tag">Teamwork</span>
+          <span class="tag">Pitch Design</span>
+        </div>
+        <div class="actions">
+          <a class="btn btn-accent px-3" href="assets/conrad.pdf" target="_blank" rel="noopener">View My Work</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
 
   <!-- CHEERLEADING -->
   <section class="cheer" id="cheer" data-aos="fade-up" aria-label="Cheerleading">
@@ -544,6 +669,9 @@ section.research{
     </div>
   </section>
 
+
+
+
   <section class="awards" data-aos="fade-up" id="awards">
     <div class="container container-narrow">
       <div class="row g-3 align-items-end">
@@ -588,7 +716,7 @@ section.research{
 
         <article class="award" data-aos="fade-up" data-aos-delay="140">
           <div class="title">HOSA — 2nd Place, Human Growth &amp; Development</div>
-          <p class="desc">Achieved second place for excellence in Health Science knowledge and application.</p>
+          <p class="desc">Achieved 2nd place in Health Science knowledge and application.</p>
           <div class="links">
             <a class="link-btn" href="assets/awards/Taeri%20Kim%20HOSA%202nd%20Human%20Growth.pdf" target="_blank"><span class="dot"></span> View Result</a>
           </div>
